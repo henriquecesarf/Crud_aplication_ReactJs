@@ -35,5 +35,16 @@
 }
 
 .register-button {
-    padding: 2px 5px;
+    display: flex;
+    justify-content: space-around;
+    align-content: center;
+    padding: 5px;
+    background-color: #5585b5;
+    color: #fafafa;
+    width: 100%;
+}
+
+.register-button:hover{
+    background-color:#53a8b6;
+    
 }
