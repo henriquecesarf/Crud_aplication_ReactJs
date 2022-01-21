@@ -3,13 +3,25 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Card from "./components/cards/Card";
 
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-import { faSave } from '@fortawesome/free-solid-svg-icons'
+// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
+// import { faSave } from '@fortawesome/free-solid-svg-icons'
+
+import Button from '@material-ui/core/Button';
+import { makeStyles } from '@material-ui/core/styles';
+import SaveIcon from '@material-ui/icons/Save';
+
+
+const useStyles = makeStyles((theme) => ({
+    button: {
+      margin: theme.spacing(1),
+    },
+  }));
 
 
 function App() {
     const [values, setValues] = useState();
     const [listfunc, setlistfunc] = useState();
+    const classes = useStyles();
 
 
 
@@ -43,56 +55,67 @@ function App() {
 
     };
 
-    return ( 
-        
-        <div className = "app-container" >
-            
-            <div className = "register-container">
-                <h1 className = "register-title"> CRUD APPLICATION </h1>
+    return (
 
-                <input 
-                    type = "text"
-                    name = "name"
-                    placeholder = "Nome"
-                    className = "register-input"
-                    onChange = { handleaddValues }
-                /> 
-                <input 
-                    type = "text"
-                    placeholder = "Email"
-                    name = "email"
-                    className = "register-input"
-                    onChange = { handleaddValues }
-                /> 
-                <input 
-                    type = "text"
-                    placeholder = "Número"
-                    name = "number"
-                    className = "register-input"
-                    onChange = { handleaddValues }
+        <div className="app-container" >
+
+            <div className="register-container">
+                <h1 className="register-title"> CRUD APPLICATION </h1>
+
+                <input
+                    type="text"
+                    name="name"
+                    placeholder="Nome"
+                    className="register-input"
+                    onChange={handleaddValues}
+                />
+                <input
+                    type="text"
+                    placeholder="Email"
+                    name="email"
+                    className="register-input"
+                    onChange={handleaddValues}
+                />
+                <input
+                    type="text"
+                    placeholder="Número"
+                    name="number"
+                    className="register-input"
+                    onChange={handleaddValues}
                 />
 
-                <button 
-                    onClick = { handleClickButton }
-                    className = "register-button" 
+                {/* <button
+                    onClick={handleClickButton}
+                    className="register-button"
                 >
-                    Cadastrar 
+                    Cadastrar
                     <FontAwesomeIcon icon={faSave} size="1x" />
-                </button> 
+                </button> */}
+
+                <Button
+                    variant="contained"
+                    onClick={handleClickButton}
+                    color="primary"
+                    size="large"
+                    className={classes.button}
+                    startIcon={<SaveIcon />}
+                >
+                    Cadastrar
+                </Button>
             </div>
 
 
             {
                 typeof listfunc !== "undefined" && listfunc.map((value) => {
-                    return ( 
-                        <Card 
-                            key = { value.id }
-                            listfunc = { listfunc }
-                            setlistfunc = { setlistfunc }
-                            id = { value.id }
-                            name = { value.funcNome }
-                            email = { value.funcEmail }
-                            number = { value.funciNumero }
+                    return (
+                        <Card
+                            key={value.id}
+                            listfunc={listfunc}
+                            setlistfunc={setlistfunc}
+                            id={value.id}
+                            name={value.funcNome}
+                            email={value.funcEmail}
+                            number={value.funciNumero}
 
                         >
 
