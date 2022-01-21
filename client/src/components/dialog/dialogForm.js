@@ -1,10 +1,10 @@
 import React, { useState } from "react";
-import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import Dialog from "@material-ui/core/Dialog";
 import DialogActions from "@material-ui/core/DialogActions";
 import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
+import Button from '@material-ui/core/Button';
 import Axios from "axios";
 
 export default function FormDialog(props) {
@@ -26,11 +26,11 @@ export default function FormDialog(props) {
             props.setListCard(
                 props.listCard.map((value) => {
                     return value.id === editValues.id ? {
-                            id: editValues.id,
-                            name: editValues.name,
-                            email: editValues.email,
-                            number: editValues.number,
-                        } :
+                        id: editValues.id,
+                        name: editValues.name,
+                        email: editValues.email,
+                        number: editValues.number,
+                    } :
                         value;
                 })
             );
@@ -55,73 +55,60 @@ export default function FormDialog(props) {
     }
 
 
-    return ( <
-        div >
-        <
-        Dialog open = { props.open }
-        onClose = { handleClose }
-
-        >
-        <
-        DialogTitle id = "form-dialog-title" > Editar < /DialogTitle> <
-        DialogContent >
-        <
-        TextField disabled margin = "dense"
+    return ( 
+        <div>
+        <Dialog open = { props.open }
+        onClose = { handleClose }>
+        <DialogTitle id = "form-dialog-title" > Editar </DialogTitle> 
+        <DialogContent >
+        <TextField disabled margin = "dense"
         id = "id"
         label = "id"
         defaultValue = { props.id }
         onChange = { gripChangesValues }
         type = "text"
-        fullWidth /
-        >
-        <
-        TextField autoFocus margin = "dense"
+        fullWidth />
+        <TextField autoFocus margin = "dense"
         id = "name"
         label = "Nome do fucinário"
         defaultValue = { props.name }
         onChange = { gripChangesValues }
         type = "text"
 
-        fullWidth /
-        >
-        <
-        TextField autoFocus margin = "dense"
+        fullWidth />
+        <TextField autoFocus margin = "dense"
         id = "number"
         label = "Número de telefone"
         defaultValue = { props.number }
         onChange = { gripChangesValues }
         type = "number"
 
-        fullWidth /
-        >
-        <
-        TextField autoFocus margin = "dense"
+        fullWidth />
+        <TextField autoFocus margin = "dense"
         id = "email"
         label = "Email"
         defaultValue = { props.email }
         onChange = { gripChangesValues }
         type = "text"
 
-        fullWidth /
-        >
-        <
-        /DialogContent> <
-        DialogActions >
-        <
-        Button onClick = { handleClose }
+        fullWidth />
+        </DialogContent>
+         <DialogActions >
+        <Button onClick = { handleClose }
         color = "primary" >
-        Cancel <
-        /Button> <
-        Button onClick = { gripDelet }
+        Cancel 
+        </Button> 
+        <Button onClick = { gripDelet }
         color = "primary" >
-        Excluir <
-        /Button> <
-        Button onClick = { gripEdit }
+        Excluir 
+        </Button> 
+        <Button onClick = { gripEdit }
         color = "primary" >
-        Salvar <
-        /Button> < /
-        DialogActions > <
-        /Dialog> < /
-        div >
+        Salvar 
+        </Button> 
+        </DialogActions > 
+        </Dialog>
+         </div>
+                                    
     );
 }
