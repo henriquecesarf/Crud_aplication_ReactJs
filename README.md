@@ -27,6 +27,20 @@ Banco de dados utlizado foi o MYSQL WORKBENCH junto com o XAMP
 
 #Regra de negócio 
 
-O usuário irá preencher o formulário com a informações solicitadas neste caso são o nome do funcinário, o email de contato junto com o telefone, feito o registro
-sugirá abaixo cards com as informações registradas, ao clicar no card do funcionário você poderá editar todas as inforamções dele, desde o nome ao número além
-de ter a possibilidade de excluí-lo
+O usuário irá preencher o formulário com a informações solicitadas.
+![image](https://user-images.githubusercontent.com/66320640/150546183-40332f54-5c27-40f0-8a06-3a50a49f7ad6.png)
+
+
+Neste caso são o nome do funcinário, o email de contato junto com o telefone, feito o registro
+E clicar em cadastrar.
+
+sugirá abaixo cards com as informações registradas.
+
+![image](https://user-images.githubusercontent.com/66320640/150546369-91d257be-f26a-4a97-aba1-df9a02ee55a8.png)
+
+
+Ao clicar no card do funcionário você poderá editar todas as inforamções dele, desde o nome ao número além
+de ter a possibilidade de excluí-lo.
+
+![image](https://user-images.githubusercontent.com/66320640/150546443-e1af2c3b-4ae9-4876-b16e-f52546da025e.png)
+
