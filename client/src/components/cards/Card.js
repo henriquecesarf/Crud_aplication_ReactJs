@@ -23,9 +23,10 @@ export default function Card(props) {
             () => setOpen(true) } 
         >
             <h1 className = "card-title" > { props.name } </h1> 
-            <p className = "card-id" > { props.id } </p> 
+            <p className = "card-id" > { props.id } </p>
+          
             <p className = "card-email" > { props.email } </p> 
-            <h3 className = "card-number" > R$ { props.number } </h3> 
+            <h3 className = "card-number" > Telefone: { props.number } </h3> 
         </div> 
         </>
     );
