@@ -77,7 +77,7 @@ function Registro() {
                     onChange={handleaddValues}
                 />
                 <input
-                    type="number"
+                    type="text"
                     placeholder="Número"
                     name="number"
                     className="register-input"

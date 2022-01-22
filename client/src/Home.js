@@ -1,13 +1,11 @@
 import "./App.css";
-import React, { useState, useEffect } from 'react';
-import Axios from 'axios';
-import Card from "./components/cards/Card";
-import { browserHistory} from 'react-router-dom';
-
-import Registro from "./Registro";
+import React, { useState } from 'react';
+import Axios from 'axios'; 
 import Button from '@material-ui/core/Button';
+import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
 import SaveIcon from '@material-ui/icons/Save';
+
 
 
 const useStyles = makeStyles((theme) => ({
@@ -19,23 +17,26 @@ const useStyles = makeStyles((theme) => ({
 
 function Home() {
     const [values, setValues] = useState();
-    const [listfunc, setlistfunc] = useState();
     const classes = useStyles();
 
 
-    useEffect(() => {
-        Axios.get("http://localhost:3001/getCards").then((response) => {
-            setlistfunc(response.data);
+    const handleClickButton = () => {
+        Axios.post("http://localhost:3001/Login", {
+            email: values.email,
+            password: values.password,
+        }).then(() => {
+
         });
-    }, []);
 
 
+    }
 
     const handleaddValues = (value) => {
         setValues((prevValues) => ({
 
             ...prevValues,
             [value.target.name]: value.target.value,
+        
         }));
 
     };
@@ -46,33 +47,48 @@ function Home() {
 
             <div className="register-container">
                 <h1 className="register-title"> Login </h1>
-                <input
-                    type="text"
-                    placeholder="Email"
-                    name="email"
-                    className="register-input"
-                    onChange={handleaddValues}
-                />
-                <input
-                    type="text"
-                    placeholder="Senha"
-                    name="number"
-                    className="register-input"
-                    onChange={handleaddValues}
-                />
+                <form action="/" method="POST">
+                    <input
+                        type="text"
+                        placeholder="Email"
+                        name="email"
+                        className="register-input"
+                        onChange={handleaddValues}
+                    />
+                    <input
+                        type="password"
+                        placeholder="Senha"
+                        name="password"
+                        className="register-input"
+                        onChange={handleaddValues}
+                    />
 
-              
 
-                <Button
-                    variant="contained"
-                    href = "/Registro"
-                    color="primary"
-                    size="large"
-                    className={classes.button}
-                    startIcon={<SaveIcon />}
-                >
-                   Login
-                </Button>
+                    <div className="app-container-button-login">
+                        <Button
+                            type="submit"
+                            variant="contained"
+                            color="primary"
+                            onClick={handleClickButton}
+                            size="large"
+                            className={classes.button}
+                            startIcon={<SaveIcon />}
+                        >
+                            Login
+                        </Button>
+                        <Link
+                            href="/Cadastro"
+                            underline="hover"
+
+
+                        >
+                            Se ainda não é cadastrado, clique aqui!!!
+                        </Link>
+                    </div>
+
+                    
+                </form>
+                
             </div>
         </div>
     );
