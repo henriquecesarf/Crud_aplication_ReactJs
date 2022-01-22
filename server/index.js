@@ -8,6 +8,34 @@ const cors = require("cors");
 app.use(cors());
 app.use(express.json());
 
+app.post("/Login", (req, res) => {
+    const { email } = req.body;
+    const { password } = req.body;
+
+    let sql = "select * from login where logEmail = ? and LogPass = ?";
+
+    db.query(sql, [ email, password], function(err, results,fields){
+        if(results.length>0){
+            window.post("/")
+        } else {
+            res.redirect("./client/src/Home")
+        }
+    });
+});
+
+
+app.post("/LogRegister", (req, res) => {
+    const { name } = req.body;
+    const { email } = req.body;
+    const { password } = req.body;
+
+    let sql = "INSERT INTO login ( logName, logEmail, LogPass) VALUES (?, ?, ?)";
+
+    db.query(sql, [name, email, password], (err, result) => {
+        console.log(err)
+    });
+});
+
 app.post("/register", (req, res) => {
     const { name } = req.body;
     const { email } = req.body;
