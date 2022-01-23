@@ -28,6 +28,8 @@
     margin-top: 60px;
     border: 3px solid black;
     border-radius: 5px;
+    display: flex;
+    flex-direction: column;
 }
 
 .register-title {
@@ -55,4 +57,13 @@
 .register-button:hover{
     background-color:#53a8b6;
     
+}
+
+.register-table-container{
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: center;
+    align-content: center;
+    padding: 10px;
 }
