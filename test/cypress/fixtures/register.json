@@ -3,5 +3,9 @@
         "nome": "Julius Dantas",
         "email": "teste@teste.com.br",
         "telefone": "71999999999"            
+    },
+    "logar":{
+        "email": "henrique.dantas@ba.estudante.senai.br",
+        "password": "123321"
     }
 }
