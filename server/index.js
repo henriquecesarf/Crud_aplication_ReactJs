@@ -16,9 +16,9 @@ app.post("/Login", (req, res) => {
 
     db.query(sql, [ email, password], function(err, results,fields){
         if(results.length>0){
-            window.post("/")
+            res.status(200).send("logado")
         } else {
-            res.redirect("./client/src/Home")
+            res.status(404).send("não logado")
         }
     });
 });
@@ -32,6 +32,11 @@ app.post("/LogRegister", (req, res) => {
     let sql = "INSERT INTO login ( logName, logEmail, LogPass) VALUES (?, ?, ?)";
 
     db.query(sql, [name, email, password], (err, result) => {
+        if (results.length > 0) {
+            res.status(200).send("Cadastro realizado com sucesso")
+        } else {
+            res.status(404).send("Ops !!! Não foi possivel realizar o cadastro")
+        }
         console.log(err)
     });
 });
@@ -44,6 +49,7 @@ app.post("/register", (req, res) => {
     let sql = "INSERT INTO funciario ( funcNome, funcEmail, funciNumero) VALUES (?, ?, ?)";
 
     db.query(sql, [name, email, number], (err, result) => {
+        res.status(200).send("logado")
         console.log(err)
     });
 });

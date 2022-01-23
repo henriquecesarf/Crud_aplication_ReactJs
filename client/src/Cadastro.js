@@ -26,8 +26,8 @@ function Registro() {
             name: values.name,
             email: values.email,
             password: values.password,
-        }).then(() => {
-
+        }).then((response) => {
+            
         });
 
 
