@@ -2,6 +2,9 @@ import "./App.css";
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Cards from "./components/cards/Cards";
+import Snackbar from '@material-ui/core/Snackbar';
+import Alert from '@material-ui/lab/Alert'
+
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faSave } from '@fortawesome/free-solid-svg-icons'
@@ -13,7 +16,7 @@ import SaveIcon from '@material-ui/icons/Save';
 
 const useStyles = makeStyles((theme) => ({
     button: {
-        margin: theme.spacing(1),
+        margin: theme.spacing(2),
     },
 }));
 
@@ -22,6 +25,7 @@ function Registro() {
     const [values, setValues] = useState();
     const [listfunc, setlistfunc] = useState();
     const classes = useStyles();
+    // const [success, setSuccess] = useState(false);
 
 
 
@@ -33,12 +37,16 @@ function Registro() {
             number: values.number,
         }).then((response) => {
             if(response.status=== 200){
-                Axios.get("http://localhost:3001/getCards").then((response) => {
+                                Axios.get("http://localhost:3001/getCards").then((response) => {
                     setlistfunc(response.data);
-                });
-            }
+                    
+                });      
+               
+                alert("Cadastro efetuado com sucesso")
+               
+            } else  {alert("ERROR! Cadastro não efetuado")}
         });
-
+        
 
     }
 
@@ -61,6 +69,18 @@ function Registro() {
 
     return (
         <>
+
+            {/* <Snackbar open={success} autoHideDuration={6000} onClose={() => setSuccess(false)}>
+                <Alert severity="success">
+                    Atualizado com sucesso.
+                </Alert>
+            </Snackbar>
+
+            <Snackbar open={error} autoHideDuration={6000} onClose={() => setError('')}>
+                <Alert severity="error">
+                    {error}
+                </Alert>
+            </Snackbar> */}
             <div className="app-container" >
 
                 <div className="register-container">
@@ -88,17 +108,15 @@ function Registro() {
                         onChange={handleaddValues}
                     />
 
-                    {/* <button
-                        onClick={handleClickButton}
-                        className="register-button"
-                    >
-                        Cadastrar
-                        <FontAwesomeIcon icon={faSave} size="1x" />
-                    </button> */}
+                    
 
                     <Button
                         variant="contained"
-                        onClick={handleClickButton}
+                        // onClick=( () => {
+                        //         handleClickButton
+                        //     }
+                        // )
+                        onClick = {handleClickButton}
                         color="primary"
                         size="large"
                         className={classes.button}
@@ -106,6 +124,8 @@ function Registro() {
                     >
                         Cadastrar
                     </Button>
+                    
+                    
                 </div>          
 
 

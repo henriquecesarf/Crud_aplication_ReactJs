@@ -22,18 +22,25 @@ export default function FormDialog(props) {
             name: editValues.name,
             email: editValues.email,
             number: editValues.number,
-        }).then(() => {
-            props.setListCard(
-                props.listCard.map((value) => {
-                    return value.id === editValues.id ? {
-                        id: editValues.id,
-                        name: editValues.name,
-                        email: editValues.email,
-                        number: editValues.number,
-                    } :
-                        value;
-                })
-            );
+        }).then((response) => {
+            if (response.status === 200) {
+                Axios.get("http://localhost:3001/getCards").then((response) => {
+                    props.setListCard(
+                        props.listCard.map((value) => {
+                            return value.id === editValues.id ? {
+                                id: editValues.id,
+                                name: editValues.name,
+                                email: editValues.email,
+                                number: editValues.number,
+                            } :
+                                value;
+                        })
+                    );
+                });
+                
+
+            }
+           
         });
         handleClose();
     };
@@ -45,6 +52,7 @@ export default function FormDialog(props) {
 
     const handleClose = () => {
         props.setOpen(false);
+        document.location.reload(true);
     };
 
     const gripChangesValues = value => {
