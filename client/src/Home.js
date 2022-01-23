@@ -29,12 +29,11 @@ function Home() {
             console.log("res", response)
             if(response.status === 200){
                
-                window.location.replace("./Registro")
-                // href("/Home")
-                // location.href("./Home")
-                // .history.push("./Home");              
+                window.location.replace("./Registro")                         
                 
-            }
+            } else if (response.status === 404)
+                    alert('usuário não encontrado')
+              console.log("alerta")
         });
 
 
