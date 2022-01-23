@@ -1,7 +1,7 @@
 import "./App.css";
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
-import Card from "./components/cards/Card";
+import Cards from "./components/cards/Cards";
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
 // import { faSave } from '@fortawesome/free-solid-svg-icons'
@@ -31,8 +31,12 @@ function Registro() {
             name: values.name,
             email: values.email,
             number: values.number,
-        }).then(() => {
-
+        }).then((response) => {
+            if(response.status=== 200){
+                Axios.get("http://localhost:3001/getCards").then((response) => {
+                    setlistfunc(response.data);
+                });
+            }
         });
 
 
@@ -56,76 +60,78 @@ function Registro() {
     };
 
     return (
+        <>
+            <div className="app-container" >
 
-        <div className="app-container" >
+                <div className="register-container">
+                    <h1 className="register-title"> CRUD APPLICATION </h1>
 
-            <div className="register-container">
-                <h1 className="register-title"> CRUD APPLICATION </h1>
+                    <input
+                        type="text"
+                        name="name"
+                        placeholder="Nome"
+                        className="register-input"
+                        onChange={handleaddValues}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Email"
+                        name="email"
+                        className="register-input"
+                        onChange={handleaddValues}
+                    />
+                    <input
+                        type="text"
+                        placeholder="Número"
+                        name="number"
+                        className="register-input"
+                        onChange={handleaddValues}
+                    />
 
-                <input
-                    type="text"
-                    name="name"
-                    placeholder="Nome"
-                    className="register-input"
-                    onChange={handleaddValues}
-                />
-                <input
-                    type="text"
-                    placeholder="Email"
-                    name="email"
-                    className="register-input"
-                    onChange={handleaddValues}
-                />
-                <input
-                    type="text"
-                    placeholder="Número"
-                    name="number"
-                    className="register-input"
-                    onChange={handleaddValues}
-                />
+                    {/* <button
+                        onClick={handleClickButton}
+                        className="register-button"
+                    >
+                        Cadastrar
+                        <FontAwesomeIcon icon={faSave} size="1x" />
+                    </button> */}
 
-                {/* <button
-                    onClick={handleClickButton}
-                    className="register-button"
-                >
-                    Cadastrar
-                    <FontAwesomeIcon icon={faSave} size="1x" />
-                </button> */}
+                    <Button
+                        variant="contained"
+                        onClick={handleClickButton}
+                        color="primary"
+                        size="large"
+                        className={classes.button}
+                        startIcon={<SaveIcon />}
+                    >
+                        Cadastrar
+                    </Button>
+                </div>          
 
-                <Button
-                    variant="contained"
-                    onClick={handleClickButton}
-                    color="primary"
-                    size="large"
-                    className={classes.button}
-                    startIcon={<SaveIcon />}
-                >
-                    Cadastrar
-                </Button>
+
             </div>
+                <div className="register-table-container">
+                    {
+                        typeof listfunc !== "undefined" && listfunc.map((value) => {
+                            return (
 
+                                <Cards
+                                    key={value.id}
+                                    listfunc={listfunc}
+                                    setlistfunc={setlistfunc}
+                                    id={value.id}
+                                    name={value.funcNome}
+                                    email={value.funcEmail}
+                                    number={value.funciNumero}
 
-            {
-                typeof listfunc !== "undefined" && listfunc.map((value) => {
-                    return (
-                        <Card
-                            key={value.id}
-                            listfunc={listfunc}
-                            setlistfunc={setlistfunc}
-                            id={value.id}
-                            name={value.funcNome}
-                            email={value.funcEmail}
-                            number={value.funciNumero}
+                                >
 
-                        >
-
-                        </Card>
-                    );
-                })
-            }
-
-
-        </div>
+                                </Cards>
+                            );
+                        })
+                    }
+            </div>
+        </>
     );
 }
 

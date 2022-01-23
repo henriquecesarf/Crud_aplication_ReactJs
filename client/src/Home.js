@@ -1,5 +1,6 @@
 import "./App.css";
 import React, { useState } from 'react';
+import { Redirect } from "react-router";
 import Axios from 'axios'; 
 import Button from '@material-ui/core/Button';
 import Link from '@material-ui/core/Link';
@@ -24,8 +25,16 @@ function Home() {
         Axios.post("http://localhost:3001/Login", {
             email: values.email,
             password: values.password,
-        }).then(() => {
-
+        }).then((response) => {
+            console.log("res", response)
+            if(response.status === 200){
+               
+                window.location.replace("./Registro")
+                // href("/Home")
+                // location.href("./Home")
+                // .history.push("./Home");              
+                
+            }
         });
 
 
@@ -47,7 +56,7 @@ function Home() {
 
             <div className="register-container">
                 <h1 className="register-title"> Login </h1>
-                <form action="/" method="POST">
+                <form>
                     <input
                         type="text"
                         placeholder="Email"
@@ -66,7 +75,6 @@ function Home() {
 
                     <div className="app-container-button-login">
                         <Button
-                            type="submit"
                             variant="contained"
                             color="primary"
                             onClick={handleClickButton}
