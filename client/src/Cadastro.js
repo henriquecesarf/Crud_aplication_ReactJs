@@ -16,13 +16,7 @@ const useStyles = makeStyles((theme) => ({
 function Cadastro() {
     const [values, setValues] = useState();
     const classes = useStyles();
-    const handleClickBack = () => {
-       
-
-     window.location.replace("./Home")
-
-        
-    }
+    
 
 
     const handleClickButton = () => {
