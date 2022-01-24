@@ -3,7 +3,8 @@ import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Cards from "./components/cards/Cards";
 import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert'
+import Alert from '@material-ui/lab/Alert';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 
 
 // import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
@@ -31,13 +32,17 @@ function Registro() {
 
 
     const handleClickButton = () => {
-        Axios.post("http://localhost:3001/register", {
+        Axios.post("http://192.168.1.25:3001/register", {
             name: values.name,
             email: values.email,
             number: values.number,
         }).then((response) => {
+            if(values.name === null){
+              
+            }
+
             if(response.status=== 200){
-                                Axios.get("http://localhost:3001/getCards").then((response) => {
+                                Axios.get("http://192.168.1.25:3001/getCards").then((response) => {
                     setlistfunc(response.data);
                     
                 });      
@@ -51,7 +56,7 @@ function Registro() {
     }
 
     useEffect(() => {
-        Axios.get("http://localhost:3001/getCards").then((response) => {
+        Axios.get("http://192.168.1.25:3001/getCards").then((response) => {
             setlistfunc(response.data);
         });
     }, []);
@@ -92,6 +97,7 @@ function Registro() {
                         placeholder="Nome"
                         className="register-input"
                         onChange={handleaddValues}
+                        required
                     />
                     <input
                         type="text"
@@ -99,6 +105,7 @@ function Registro() {
                         name="email"
                         className="register-input"
                         onChange={handleaddValues}
+                        required
                     />
                     <input
                         type="text"
@@ -106,24 +113,30 @@ function Registro() {
                         name="number"
                         className="register-input"
                         onChange={handleaddValues}
+                        required
                     />
+                    <div className="app-container-button-cadastro">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            className={classes.button}
+                            href="/"
+                        >
+                            <ArrowBackIcon />
+                        </Button>
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            onClick={handleClickButton}
+                            size="large"
+                            className={classes.button}
+                            startIcon={<SaveIcon />}
+                        >
+                            Cadastrar
+                        </Button>
 
-                    
 
-                    <Button
-                        variant="contained"
-                        // onClick=( () => {
-                        //         handleClickButton
-                        //     }
-                        // )
-                        onClick = {handleClickButton}
-                        color="primary"
-                        size="large"
-                        className={classes.button}
-                        startIcon={<SaveIcon />}
-                    >
-                        Cadastrar
-                    </Button>
+                    </div>
                     
                     
                 </div>          

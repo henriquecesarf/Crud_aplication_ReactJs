@@ -6,7 +6,7 @@ import DialogContent from "@material-ui/core/DialogContent";
 import DialogTitle from "@material-ui/core/DialogTitle";
 import Button from '@material-ui/core/Button';
 import Axios from "axios";
-
+ 
 export default function FormDialog(props) {
 
     const [editValues, setEditValues] = useState({
@@ -17,14 +17,14 @@ export default function FormDialog(props) {
 
     });
     const gripEdit = () => {
-        Axios.put("http://localhost:3001/edit", {
+        Axios.put("http://192.168.1.25:3001/edit", {
             id: editValues.id,
             name: editValues.name,
             email: editValues.email,
             number: editValues.number,
         }).then((response) => {
             if (response.status === 200) {
-                Axios.get("http://localhost:3001/getCards").then((response) => {
+                Axios.get("http://192.168.1.25:3001//getCards").then((response) => {
                     props.setListCard(
                         props.listCard.map((value) => {
                             return value.id === editValues.id ? {
@@ -46,7 +46,7 @@ export default function FormDialog(props) {
     };
 
     const gripDelet = () => {
-        Axios.delete(`http://localhost:3001/delete/${editValues.id}`);
+        Axios.delete(`http://192.168.1.25:3001/delete/${editValues.id}`);
         handleClose();
     }
 
@@ -67,7 +67,7 @@ export default function FormDialog(props) {
         <div>
         <Dialog open = { props.open }
         onClose = { handleClose }>
-        <DialogTitle id = "form-dialog-title" > Editar </DialogTitle> 
+        <DialogTitle id = "form-dialog-title" > Editar Registro {props.name} </DialogTitle> 
         <DialogContent >
         <TextField disabled margin = "dense"
         id = "id"

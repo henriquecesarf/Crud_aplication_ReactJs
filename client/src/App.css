@@ -18,7 +18,16 @@
     align-items: center;
     justify-content: space-evenly;
     flex-direction: column;
-    border: 0px solid transparent
+    border: 0px solid transparent;
+    flex-wrap: wrap;
+}
+.app-container .app-container-button-login {
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    flex-direction: wrap;
+    border: 0px solid transparent;
+    flex-wrap: wrap;
 }
 
 .register-container {
