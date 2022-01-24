@@ -35,7 +35,7 @@ app.post("/LogRegister", (req, res) => {
         if (results.length > 0) {
             res.status(200).send("Cadastro realizado com sucesso")
         } else {
-            res.status(404).send("Ops !!! Não foi possivel realizar o cadastro")
+            res.send("teste")
         }
         console.log(err)
     });

@@ -1,13 +1,10 @@
 import "./App.css";
 import React, { useState } from 'react';
-import { Redirect } from "react-router";
 import Axios from 'axios';
 import Button from '@material-ui/core/Button';
-import Link from '@material-ui/core/Link';
 import { makeStyles } from '@material-ui/core/styles';
+import ArrowBackIcon from '@material-ui/icons/ArrowBack';
 import SaveIcon from '@material-ui/icons/Save';
-
-
 
 const useStyles = makeStyles((theme) => ({
     button: {
@@ -19,10 +16,17 @@ const useStyles = makeStyles((theme) => ({
 function Cadastro() {
     const [values, setValues] = useState();
     const classes = useStyles();
+    const handleClickBack = () => {
+       
+
+     window.location.replace("./Home")
+
+        
+    }
 
 
     const handleClickButton = () => {
-        Axios.post("http://localhost:3001/LogRegister", {
+        Axios.post("http://192.168.1.25:3001/LogRegister", {
             name: values.name,
             email: values.email,
             password: values.password,
@@ -56,13 +60,15 @@ function Cadastro() {
                         name="name"
                         className="register-input"
                         onChange={handleaddValues}
+                        required
                     />
                     <input
-                        type="text"
+                        type="email"
                         placeholder="Email"
                         name="email"
                         className="register-input"
                         onChange={handleaddValues}
+                        required
                     />
                     <input
                         type="password"
@@ -70,10 +76,19 @@ function Cadastro() {
                         name="password"
                         className="register-input"
                         onChange={handleaddValues}
+                        required
                     />
 
 
-                    <div className="app-container-button-login">
+                    <div className="app-container-button-cadastro">
+                        <Button
+                            variant="contained"
+                            color="primary"
+                            className={classes.button}
+                            href = "/"
+                        >
+                            <ArrowBackIcon/>
+                        </Button>
                         <Button
                             variant="contained"
                             color="primary"
@@ -84,6 +99,7 @@ function Cadastro() {
                         >
                             Cadastrar
                         </Button>
+                       
                         
                     </div>
 

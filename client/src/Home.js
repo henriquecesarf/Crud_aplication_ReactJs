@@ -22,7 +22,7 @@ function Home() {
 
 
     const handleClickButton = () => {
-        Axios.post("http://localhost:3001/Login", {
+        Axios.post("http://192.168.1.25:3001/Login", {
             email: values.email,
             password: values.password,
         }).then((response) => {
@@ -62,6 +62,7 @@ function Home() {
                         name="email"
                         className="register-input"
                         onChange={handleaddValues}
+                        required
                     />
                     <input
                         type="password"
@@ -69,6 +70,7 @@ function Home() {
                         name="password"
                         className="register-input"
                         onChange={handleaddValues}
+                        required
                     />
 
 
