@@ -2,14 +2,7 @@ import "./App.css";
 import React, { useState, useEffect } from 'react';
 import Axios from 'axios';
 import Cards from "./components/cards/Cards";
-import Snackbar from '@material-ui/core/Snackbar';
-import Alert from '@material-ui/lab/Alert';
-import ArrowBackIcon from '@material-ui/icons/ArrowBack';
-
-
-// import { FontAwesomeIcon } from '@fortawesome/react-fontawesome'
-// import { faSave } from '@fortawesome/free-solid-svg-icons'
-
+import Link from '@material-ui/core/Link';
 import Button from '@material-ui/core/Button';
 import { makeStyles } from '@material-ui/core/styles';
 import SaveIcon from '@material-ui/icons/Save';
@@ -115,15 +108,8 @@ function Registro() {
                         onChange={handleaddValues}
                         required
                     />
-                    <div className="app-container-button-cadastro">
-                        <Button
-                            variant="contained"
-                            color="primary"
-                            className={classes.button}
-                            href="/"
-                        >
-                            <ArrowBackIcon />
-                        </Button>
+                    <div className="app-container-button-login">
+                       
                         <Button
                             variant="contained"
                             color="primary"
@@ -134,6 +120,14 @@ function Registro() {
                         >
                             Cadastrar
                         </Button>
+                        <Link
+                            href="/"
+                            underline="hover"
+
+
+                        >
+                            Voltar
+                        </Link>
 
 
                     </div>
